@@ -1,0 +1,66 @@
+doctype html
+html
+    head
+        title   POS of Pharmacy
+        link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet' href='/css/style.css')
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+        script(src='https://unpkg.com/sweetalert/dist/sweetalert.min.js')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+
+    body
+        nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+            a.navbar-brand(href='/') Point Of Sale System Of Pharmacy
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarsExampleDefault.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item
+                        a.nav-link(href='/') Home 
+                        span.sr-only (current)
+                    if user    
+                        li.nav-item
+                            a.nav-link(href='/teachers/add') Add Products
+                            span.sr-only (current)
+                        li.nav-item
+                            a.nav-link(href='/teachers/sales') Sales
+                            span.sr-only (current)
+                ul.nav.navbar-nav.navbar-right
+                    if user    
+                        li.nav-item
+                            a.nav-link(href='/users/logout') Logout
+                            span.sr-only (current)
+                        li.nav-item
+                            a.nav-link(href='/users/register') Register
+                            span.sr-only (current)
+                    else   
+                        
+                        li.nav-item
+                            a.nav-link(href='/users/login') Login
+                 
+                    
+        .container
+            
+            br
+            
+            != messages('message', locals)
+            if errors
+                each error, i in errors
+                    div(class="alert alert-danger") #{error.msg}  
+            block content
+            br
+            hr
+            footer
+                b 
+                    center
+                        p Copyright &copy; 2018 , Muhammad Usama Usman
+        script(src= '/bower_components/jquery/dist/jquery.js')
+        script(src= '/bower_components/bootstrap/dist/js/bootstrap.js')
+        script(src= '/js/main.js')
+        script(src= '/js/java.js')
+        
+        <!--.msg is use to send msg-->
+            

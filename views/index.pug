@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    center
+        h1 #{title}
+        hr
+    table.table.table-hover.table-bordered
+        thead.thead-dark
+            tr
+                th(scope='col' colspan = '3') 
+                    center 
+                        h2 Product Details
+        tbody
+            tr
+                th(scope='row') Name
+                th(scope='row') Quantity
+                th(scope='row') Operation
+
+            each product , i in art
+                    tr
+                        td  
+                            a(href="/teachers/" + product._id)= (i+1) + ' : ' + product.name
+                        td  #{product.quantity}    
+                        td 
+                            form(method='POST', action='/teachers/return/'+ product._id)
+                                .form-group
+                                    input.form-control( name='quantity' type='number' )
+                                if user.role === 'admin'
+                                    input.btn.btn-outline-danger(type='submit', value='Return')
+                                    input.btn.btn-outline-success(formaction='/teachers/enter/'+ product._id type='submit', value='Enter')

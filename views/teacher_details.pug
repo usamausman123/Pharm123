@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    br 
+    br 
+    br 
+    br
+    table.table.table-hover.table-bordered
+        thead.thead-dark
+            tr
+                th(scope='col' colspan = '2') 
+                    center 
+                        h2 Product Details
+        tbody
+            tr
+                th(scope='row') Name
+                td #{product.name}
+            tr
+                th(scope='row') Quantity
+                td #{product.quantity}
+            tr
+                th(scope='row') Price
+                td #{product.price}
+            tr  
+                th(scope='row') Description
+                td #{product.description}
+            tr  
+                th(scope='row') Company
+                td #{product.company}
+            tr  
+                th(scope='row') Manufacture Date
+                td #{product.manDate.getDate() + '/' + product.manDate.getMonth()  + '/' + product.manDate.getFullYear()}
+            tr  
+                th(scope='row') Expiry Date
+                td #{product.expDate.getDate() +  '/' + product.expDate.getMonth() + '/' + product.expDate.getFullYear()}
+    hr
+    if user.role === 'admin'
+        a.btn.btn-outline-success(href='/teachers/edit/'+ product._id) Update 
+        a.btn.btn-outline-danger.delete-teacher(href='#',data-id= product._id) Delete

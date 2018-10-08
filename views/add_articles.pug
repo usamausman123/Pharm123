@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    h1 #{title}
+    form(method='POST', action='/teachers/add')
+        .form-group
+            label Name : 
+            input.form-control(name='name' type='text')
+        .form-group
+            label Quantity : 
+            input.form-control(name='quantity' type='number')
+        .form-group
+            label Price : 
+            input.form-control(name='price' type='number')
+        .form-group
+            label Description : 
+            input.form-control(name='description' type='text')
+        .form-group
+            label Company : 
+            input.form-control(name='company' type='text')
+        .form-group
+            label Manufacture Date : 
+            input.form-control(name='manDate' type='text')
+        .form-group
+            label Expiry Date : 
+            input.form-control(name='expDate' type='text')
+        input.btn.btn-primary(type='submit', value='Submit')

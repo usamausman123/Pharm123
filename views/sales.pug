@@ -1,0 +1,52 @@
+
+
+
+
+extends layout
+    
+block content
+    center
+        h1 #{title}
+        hr
+    table#b.table.table-hover.table-bordered
+        thead.thead-dark
+            tr
+                th(scope='col' colspan = '4') 
+                    center 
+                        h2 Product Details
+        tbody
+            tr
+                th(scope='row') Name
+                th(scope='row') Stock
+                th(scope='row') Price
+                th(scope='row') Quantity
+                    
+        
+            each product , i in art
+                    tr
+                        td  
+                            a(href="/teachers/" + product._id)= (i+1) + ' : ' + product.name
+                        td  #{product.quantity}
+                        td  #{product.price}    
+                        td(contenteditable='true') 0
+                        
+                        
+    form
+        input.btn.btn-outline-success(onclick='fun()', style='float:right;', type='button', value='Generate Bill')
+    br
+    br
+    hr
+    table#b.table.table-striped.table-bordered
+        tbody
+            tr.success
+                th Sub Total
+                td
+                    input#t1.form-control(type='text', style='background-color:darkgrey; color:cornsilk;')
+            tr.danger
+                th Tax
+                td
+                    input#t2.form-control(type='text', style='background-color: darkgrey; color:cornsilk;')
+            tr.info
+                th Total
+                td
+                    input#t3.form-control(type='text', style='background-color: darkgrey; color:cornsilk;')
