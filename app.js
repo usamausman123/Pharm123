@@ -26,6 +26,7 @@ db.on('error',function(err){
 const app = express();
 
 
+
 //load view engine
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
@@ -135,8 +136,11 @@ function userAuthenticated(req,res,next){
     }
 }
 
+/*var port = normalizePort();
+app.set('port', port);*/
+
 
 //server start
-app.listen(5000,function(){
+app.listen(process.env.PORT || '5000',function(){
     console.log('server started on port 5000...');
 });
